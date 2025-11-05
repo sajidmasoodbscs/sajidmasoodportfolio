@@ -21,7 +21,7 @@ const AboutSection = () => {
     {
       icon: Smartphone,
       title: "E-commerce Solutions",
-      description: "Shopify apps and custom e-commerce platforms"
+      description: "WordPress, Shopify Stores, Shopify Apps(mern), and Webflow platforms"
     }
   ];
 

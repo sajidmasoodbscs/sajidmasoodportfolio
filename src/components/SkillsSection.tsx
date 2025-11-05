@@ -6,12 +6,13 @@ const SkillsSection = () => {
     {
       title: "Frontend Development",
       icon: "🎨",
-      skills: ["React", "Next.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "Tailwind CSS", "Material-UI", "Bootstrap"]
+      skills: ["React", "Next.js", "JavaScript","Framer Motion", "React Router", "Zod / Yup","Redux / Redux Toolkit", "TypeScript", "HTML5", "CSS3", "Tailwind CSS", "Material-UI", "Bootstrap"]
     },
     {
       title: "Backend Development", 
       icon: "⚙️",
-      skills: ["Node.js", "Express.js", "RESTful APIs", "GraphQL", "JWT Authentication", "Middleware", "Multer", "Morgan", "Swagger"]
+      skills: ["Node.js", "Express.js", "RESTful APIs", "GraphQL", "JWT Authentication","Bcrypt (password hashing)","Middleware",
+"Helmet (security headers)", "Multer", "Morgan", "Swagger"]
     },
     {
       title: "Databases",
@@ -24,15 +25,23 @@ const SkillsSection = () => {
       skills: ["AWS Lambda", "S3 Buckets", "QuickSight", "Heroku", "Vercel", "Docker", "CI/CD", "Server Management"]
     },
     {
-      title: "E-commerce & CMS",
-      icon: "🛒",
-      skills: ["Shopify Apps", "Shopify Plus", "WordPress", "Webflow", "Payment Integration", "Inventory Management"]
+      title: "Third-Party Integrations",
+      icon: "🔗",
+      skills: [
+        "HubSpot", "Twilio", "Stripe", "Strapi", "SAP", "Klaviyo"
+      ]
     },
     {
       title: "Tools & Workflow",
       icon: "🔧",
       skills: ["Git", "GitHub", "Bitbucket", "Jira", "Trello", "VS Code", "Postman", "Chrome DevTools"]
+    },
+    {
+      title: "E-commerce & CMS",
+      icon: "🛒",
+      skills: ["Shopify Apps", "Shopify Plus", "WordPress", "Webflow", "Payment Integration", "Inventory Management"]
     }
+    
   ];
 
   return (
@@ -46,34 +55,40 @@ const SkillsSection = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {skillCategories.map((category, index) => (
-              <Card 
-                key={index}
-                className={`skill-card animate-scale-in`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+              <div 
+                key={index} 
+                className="w-full sm:w-[calc(33.333%-1.5rem)] flex justify-center"
               >
-                <div className="mb-4">
-                  <div className="text-3xl mb-2">{category.icon}</div>
-                  <h3 className="text-xl font-semibold text-foreground">
-                    {category.title}
-                  </h3>
-                </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge 
-                      key={skillIndex}
-                      variant="secondary"
-                      className="text-xs hover:bg-primary/20 hover:text-primary transition-smooth"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </Card>
+                <Card 
+                  className="skill-card animate-scale-in w-full"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="mb-4">
+                    <div className="text-3xl mb-2">{category.icon}</div>
+                    <h3 className="text-xl font-semibold text-foreground">
+                      {category.title}
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <Badge 
+                        key={skillIndex}
+                        variant="secondary"
+                        className="text-xs hover:bg-primary/20 hover:text-primary transition-smooth"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </Card>
+              </div>
             ))}
           </div>
+
+
 
           {/* Additional Technologies */}
           <div className="mt-16 text-center animate-fade-in">
