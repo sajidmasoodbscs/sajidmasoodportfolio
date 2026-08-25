@@ -4,20 +4,70 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
+import { useState, type ChangeEvent, type FormEvent } from 'react';
+import { useToast } from '@/hooks/use-toast';
+import SectionAtmosphere from '@/components/SectionAtmosphere';
+import contactBg from '@/assets/bg-contact.png';
 
 const ContactSection = () => {
+  const { toast } = useToast();
+  const [sending, setSending] = useState(false);
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = event.target;
+    setForm((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    setSending(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message.');
+      }
+
+      setForm({ name: '', email: '', subject: '', message: '' });
+      toast({
+        title: 'Message sent',
+        description: 'Thanks — I will get back to you soon.',
+      });
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        title: 'Could not send',
+        description: error instanceof Error ? error.message : 'Please try again.',
+      });
+    } finally {
+      setSending(false);
+    }
+  };
+
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
-      content: "developer@portfolio.com",
-      link: "mailto:developer@portfolio.com"
+      content: "sajidmasood351@gmail.com",
+      link: "mailto:sajidmasood351@gmail.com"
     },
     {
       icon: Phone,
       title: "Phone", 
-      content: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      content: "+92 305 5860230",
+      link: "tel:+923055860230"
     },
     {
       icon: MapPin,
@@ -31,18 +81,19 @@ const ContactSection = () => {
     {
       icon: Github,
       title: "GitHub",
-      link: "https://github.com"
+      link: "https://github.com/sajidmasoodbscs"
     },
     {
       icon: Linkedin,
       title: "LinkedIn", 
-      link: "https://linkedin.com"
+      link: "https://www.linkedin.com/in/sajid-masood-380707112"
     }
   ];
 
   return (
-    <section id="contact" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="relative py-20 overflow-hidden">
+      <SectionAtmosphere image={contactBg} wash="sky" />
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="section-header mb-4">Get In Touch</h2>
@@ -109,7 +160,12 @@ const ContactSection = () => {
                       className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-smooth"
                       asChild
                     >
-                      <a href={social.link} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.title}
+                      >
                         <social.icon className="h-5 w-5" />
                       </a>
                     </Button>
@@ -125,7 +181,7 @@ const ContactSection = () => {
                   Send a Message
                 </h3>
                 
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="text-foreground">
@@ -133,7 +189,11 @@ const ContactSection = () => {
                       </Label>
                       <Input 
                         id="name"
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
                         placeholder="Your name"
+                        required
                         className="bg-background/50"
                       />
                     </div>
@@ -143,8 +203,12 @@ const ContactSection = () => {
                       </Label>
                       <Input 
                         id="email"
+                        name="email"
                         type="email"
+                        value={form.email}
+                        onChange={handleChange}
                         placeholder="your@email.com"
+                        required
                         className="bg-background/50"
                       />
                     </div>
@@ -156,7 +220,11 @@ const ContactSection = () => {
                     </Label>
                     <Input 
                       id="subject"
+                      name="subject"
+                      value={form.subject}
+                      onChange={handleChange}
                       placeholder="Project inquiry"
+                      required
                       className="bg-background/50"
                     />
                   </div>
@@ -167,17 +235,22 @@ const ContactSection = () => {
                     </Label>
                     <Textarea 
                       id="message"
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
                       placeholder="Tell me about your project..."
                       rows={5}
+                      required
                       className="bg-background/50"
                     />
                   </div>
 
                   <Button 
                     type="submit"
+                    disabled={sending}
                     className="w-full primary-gradient hover:shadow-primary transition-spring text-lg py-6"
                   >
-                    Send Message
+                    {sending ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </CardContent>

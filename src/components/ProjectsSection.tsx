@@ -4,12 +4,21 @@ import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Github } from 'lucide-react';
 import rewardPlatformImg from '@/assets/Reward_Platform_Screenshot-1.png';
 import doctorAppointmentImg from '@/assets/Doctor Appointment System Screenshot-1.png';
-import integritiCrmImg from '@/assets/integriti-crm-screenshot-1.jpg';
-import greenmindCrmImg from '@/assets/Green_mind_project_view.png';
-import staffingImg from '@/assets/staffing-1.jpg';
-import studioImg from '@/assets/studio-1.jpg';
-import wordpressImg from '@/assets/wordpress-site-1.jpg';
-import shopifyImg from '@/assets/shopify-store-1.jpg';
+import integritiCrmImg from '@/assets/integriti-crm-screenshot-1.png';
+import greenmindCrmImg from '@/assets/greenmind.png';
+import staffingImg from '@/assets/staffing-1.png';
+import studioImg from '@/assets/studio-1.png';
+import mxsocalImg from '@/assets/mxsocal.png';
+import hirundoImg from '@/assets/hirundo.png';
+import lifeScriptImg from '@/assets/lifescript.png';
+import foremostImg from '@/assets/foremost-1.png';
+import checkMyRideImg from '@/assets/check-my-ride.webp';
+import nettPharmacyImg from '@/assets/nett-pharmacy.webp';
+import callAVanImg from '@/assets/call-a-van.webp';
+import skinAndHairImg from '@/assets/skin-and-hair.webp';
+import oushkPharmacyImg from '@/assets/oushk-pharmacy.webp';
+import SectionAtmosphere from '@/components/SectionAtmosphere';
+import projectsBg from '@/assets/bg-projects.png';
 
 const ProjectsSection = () => {
   const projects = [
@@ -30,14 +39,6 @@ const ProjectsSection = () => {
       category: "Full-Stack Development"
     },
     {
-      title: "Integriti CRM",
-      description: "Lead-developed CRM system for managing leads, opportunities, clients, contacts, meetings, and tasks. Features role-based user management, lead qualification, and opportunity conversion tracking.",
-      technologies: ["React", "Node.js", "MongoDB", "Role Management", "Task Automation"],
-      image: integritiCrmImg,
-      featured: true,
-      category: "CRM Development"
-    },
-    {
       title: "GreenMinds CRM",
       description: "Advanced project management CRM enabling companies to manage consultants, clients, and projects. Features Microsoft 365 integration, call management, email automation, and live chat support.",
       technologies: ["Next.js", "Node.js", "MongoDB", "Microsoft 365 API", "Real-time Chat"],
@@ -52,7 +53,8 @@ const ProjectsSection = () => {
       technologies: ["Next.js", "React", "Tailwind CSS", "SEO Optimization"],
       image: staffingImg,
       featured: false,
-      category: "Website Development"
+      category: "Website Development",
+      liveUrl: "https://integritistaffing.com/"
     },
     {
       title: "Integriti Studio Website",
@@ -60,29 +62,103 @@ const ProjectsSection = () => {
       technologies: ["Next.js", "React", "GSAP", "Tailwind CSS"],
       image: studioImg,
       featured: false,
-      category: "Website Development"
+      category: "Website Development",
+      liveUrl: "https://www.integritistudio.com/"
     },
     {
-      title: "WordPress Sites Collection",
-      description: "Developed 4 custom WordPress websites with custom themes, plugins, and responsive designs. Each site tailored to specific business requirements and optimized for performance.",
-      technologies: ["WordPress", "PHP", "Custom Themes", "Plugin Development", "SEO"],
-      image: wordpressImg,
-      featured: false,
-      category: "CMS Development"
+      title: "Integriti CRM",
+      description: "Lead-developed CRM system for managing leads, opportunities, clients, contacts, meetings, and tasks. Features role-based user management, lead qualification, and opportunity conversion tracking.",
+      technologies: ["React", "Node.js", "MongoDB", "Role Management", "Task Automation"],
+      image: integritiCrmImg,
+      featured: true,
+      category: "CRM Development"
     },
     {
-      title: "Shopify Stores & Custom Apps",
-      description: "Developed 2 Shopify stores and custom Shopify applications for inventory management and analytics. Apps integrate with Shopify APIs for real-time functionality.",
-      technologies: ["Shopify API", "React", "Node.js", "Webhooks", "Store Analytics"],
-      image: shopifyImg,
-      featured: false,
-      category: "E-commerce Development"
+      title: "Check My Ride",
+      description: "Vehicle inspection platform that simplifies used-car inspections for buyers purchasing remotely or locally. Customers book a pre-purchase inspection, connect with qualified mechanics, and receive detailed reports before buying. Integriti Studio built a fully automated lifecycle: online booking, intelligent assignment to certified mechanics, structured quality review, and Stripe payments after approval.",
+      technologies: ["Webflow", "Next.js", "Node.js", "Airtable", "Stripe Connect Express"],
+      image: checkMyRideImg,
+      featured: true,
+      category: "Marketplace",
+      liveUrl: "https://check-my-ride.onrender.com/Booking"
+    },
+    {
+      title: "Call A Van",
+      description: "On-demand platform (callavan.live) connecting customers with nearby van drivers for house removals, single-item transport, furniture collection, storage and student moves, and waste runs. Built from the ground up: marketing site, driver and customer experiences, real-time map of live nearby drivers, driver verification before going live, and a reliable backend so customers can call a driver directly with no middleman booking flow.",
+      technologies: ["Supabase", "JavaScript", "Webflow", "Node.js", "Flutter"],
+      image: callAVanImg,
+      featured: true,
+      category: "Marketplace",
+      liveUrl: "https://www.callavan.live/"
+    },
+    {
+      title: "Foremost",
+      description: "Corporate MERN site for Foremost, deployed on AWS. Content is driven from the database so admins can manage company history, products, and pages from an admin portal. The site covers Foremost’s story: Imperial Oil asked Bruce Nodwell to build vehicles for muskeg; early North King designs were limited, then he focused on soft tracks and single rows of wheels for large tracked vehicles.",
+      technologies: ["MERN", "React", "Node.js", "Express", "MongoDB", "AWS", "Admin CMS"],
+      image: foremostImg,
+      featured: true,
+      category: "Corporate Website",
+      liveUrl: "https://www.foremost.ca/"
+    },
+    {
+      title: "MX SoCal",
+      description: "Motocross rental landing page is live while the client finalizes brand assets. Next phase is a complete MERN bike rental platform: fleet booking, rider experience, and paddock-style support for Southern California riders.",
+      technologies: ["MERN", "React", "Node.js", "Express", "MongoDB", "AWS"],
+      image: mxsocalImg,
+      featured: true,
+      category: "E-commerce / Rentals",
+      liveUrl: "https://www.mxsocal.com/"
+    },
+    {
+      title: "Nett Pharmacy",
+      description: "Pharmaceutical and beauty retail storefront for a brand with 14,000+ SKUs across healthcare, wellness, skincare, and beauty. Replaced a limited setup with a modern Shopify eCommerce experience that can handle volume, product complexity, and the customer experience needed to compete online.",
+      technologies: ["Shopify", "Liquid", "HTML", "JavaScript"],
+      image: nettPharmacyImg,
+      featured: true,
+      category: "E-commerce",
+      liveUrl: "https://nettpharmacy.com/"
+    },
+    {
+      title: "Skin and Hair Center",
+      description: "Dermatology and skin/hair care brand combining clinical services with an online store for skincare, haircare, wellness, and related products. Shopify storefront designed to match in-person professionalism while making it simple to discover products, understand options, and check out.",
+      technologies: ["Shopify"],
+      image: skinAndHairImg,
+      featured: true,
+      category: "E-commerce",
+      liveUrl: "https://skinandhaircenter.com/"
+    },
+    {
+      title: "Oushk Pharmacy",
+      description: "Patient-first, pharmacist-led online pharmacy for consultations, treatments, healthcare products, weight-loss programs, nutrition coaching, and ongoing support. Improved a complex category structure, richer product content, personalization for cross-selling, and a simpler checkout to reduce cart abandonment.",
+      technologies: ["Shopify", "Liquid", "JavaScript"],
+      image: oushkPharmacyImg,
+      featured: true,
+      category: "E-commerce",
+      liveUrl: "https://www.oushkpharmacy.com/"
+    },
+    {
+      title: "Hirundo",
+      description: "Custom landing page for an AI consulting company, implemented pixel-perfect from Figma. Hover on the brain visual, interactive button states, and subtle scroll-based animations for a modern, premium feel. Smooth performance, accurate typography and colors, deployed on GitHub Pages and ready for a custom domain. Hirundo builds custom and outsourced AI systems—from design to deployment—as an external AI unit or around a client’s business processes.",
+      technologies: ["React", "Tailwind CSS", "Material UI"],
+      image: hirundoImg,
+      featured: true,
+      category: "Landing Page",
+      liveUrl: "https://hirundo.tech/"
+    },
+    {
+      title: "Life Script",
+      description: "TheLifeScript is a storytelling platform where users capture and preserve life narratives in keepsake books. Guided prompts, voice-to-text, photo enhancements, and editor tools help people reflect on and share their journey. Packages include premium hardcover books and lifetime platform access, blending intuitive UX with scalable storytelling features.",
+      technologies: ["Next.js", "React", "Front-End Development"],
+      image: lifeScriptImg,
+      featured: true,
+      category: "Web Application"
     }
   ];
 
   return (
-    <section id="projects" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="relative py-20 overflow-hidden">
+      <SectionAtmosphere image={projectsBg} wash="lavender" />
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="section-header mb-4">Featured Projects</h2>
@@ -95,15 +171,16 @@ const ProjectsSection = () => {
             {projects.map((project, index) => (
                <Card 
                  key={index}
-                 className="project-card animate-scale-in hover:shadow-lg transition-all duration-300"
+                 className="project-card hover:shadow-lg transition-shadow duration-300"
                  style={{ animationDelay: `${index * 0.1}s` }}
                >
                  <CardHeader>
-                   <div className="aspect-video relative overflow-hidden rounded-lg mb-4">
+                   <div className="aspect-[3/2] relative overflow-hidden rounded-lg mb-4 bg-slate-100/90 border border-border/50">
                      <img 
                        src={project.image} 
                        alt={project.title}
-                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                       loading="lazy"
+                       className="absolute inset-0 h-full w-full object-contain p-2"
                      />
                    </div>
                    <div className="flex items-start justify-between">

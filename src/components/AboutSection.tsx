@@ -1,5 +1,7 @@
 import { Card } from '@/components/ui/card';
 import { Code, Database, Globe, Smartphone } from 'lucide-react';
+import SectionAtmosphere from '@/components/SectionAtmosphere';
+import aboutBg from '@/assets/bg-about.png';
 
 const AboutSection = () => {
   const highlights = [
@@ -26,10 +28,12 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-6">
+    <section id="about" className="relative py-20 overflow-hidden">
+      <SectionAtmosphere image={aboutBg} wash="sky" />
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-16">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">The studio</p>
             <h2 className="section-header mb-4">About Me</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Passionate MERN stack developer with extensive experience in building 
@@ -60,7 +64,7 @@ const AboutSection = () => {
               {highlights.map((highlight, index) => (
                 <Card 
                   key={index} 
-                  className={`skill-card animate-scale-in`}
+                  className="skill-card"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <highlight.icon className="h-8 w-8 text-primary mb-4" />

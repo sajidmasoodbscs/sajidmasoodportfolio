@@ -6,53 +6,47 @@
 
 @layer base {
   :root {
-    /* Dark theme base colors */
-    --background: 222 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
 
-    --card: 222 84% 7%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 222 84% 7%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Professional blue primary */
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 84% 4.9%;
-    --primary-glow: 217 91% 70%;
+    --primary: 221 83% 45%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 217 91% 60%;
 
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 217 32% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 40%;
 
-    /* Vibrant accent */
-    --accent: 142 71% 45%;
+    --accent: 166 72% 36%;
     --accent-foreground: 210 40% 98%;
-    --accent-glow: 142 71% 55%;
+    --accent-glow: 166 76% 48%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 32% 20%;
-    --input: 217 32% 17%;
-    --ring: 217 91% 60%;
+    --border: 214 32% 88%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 45%;
 
     --radius: 0.75rem;
 
-    /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(217 32% 8%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(217 32% 12%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 45%), hsl(199 89% 48%));
+    --gradient-accent: linear-gradient(135deg, hsl(166 72% 36%), hsl(166 76% 48%));
+    --gradient-hero: linear-gradient(145deg, hsl(210 50% 98% / 0.92) 0%, hsl(199 80% 95% / 0.88) 50%, hsl(166 40% 95% / 0.9) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
 
-    /* Shadows */
-    --shadow-primary: 0 20px 40px -10px hsl(var(--primary) / 0.3);
-    --shadow-accent: 0 20px 40px -10px hsl(var(--accent) / 0.3);
-    --shadow-elegant: 0 25px 50px -12px hsl(222 84% 2% / 0.8);
+    --shadow-primary: 0 18px 40px -16px hsl(221 83% 45% / 0.28);
+    --shadow-accent: 0 18px 40px -16px hsl(166 72% 36% / 0.22);
+    --shadow-elegant: 0 20px 50px -20px hsl(222 47% 11% / 0.18);
 
-    /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
@@ -68,7 +62,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 }
 
@@ -87,6 +81,10 @@
 
   .accent-gradient {
     background: var(--gradient-accent);
+  }
+
+  .primary-gradient {
+    background: var(--gradient-primary);
   }
 
   .shadow-primary {
@@ -110,14 +108,205 @@
   }
 
   .skill-card {
-    @apply card-gradient border border-border/50 rounded-lg p-6 transition-smooth hover:border-primary/30 hover:shadow-primary;
+    @apply card-gradient border border-border/70 rounded-lg p-6 shadow-sm transition-smooth hover:border-primary/40 hover:shadow-primary;
   }
 
   .project-card {
-    @apply card-gradient border border-border/50 rounded-lg overflow-hidden transition-smooth hover:border-accent/30 hover:shadow-accent hover:-translate-y-1;
+    @apply card-gradient border border-border/70 rounded-lg overflow-hidden shadow-sm transition-smooth hover:border-accent/40 hover:shadow-accent;
   }
 
   .section-header {
     @apply text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .glass-panel {
+    background: hsl(0 0% 100% / 0.72);
+    border: 1px solid hsl(214 32% 88% / 0.9);
+    box-shadow: var(--shadow-elegant);
+    backdrop-filter: blur(16px);
+  }
+
+  .hero-ring {
+    position: absolute;
+    inset: -14px;
+    border-radius: 2.4rem;
+    background: conic-gradient(from 120deg, hsl(var(--primary)), hsl(var(--accent)), #7c3aed, hsl(var(--primary)));
+    filter: blur(0.4px);
+    animation: spin-slow 10s linear infinite;
+    z-index: 0;
+  }
+
+  .particle-field {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none !important;
+  }
+
+  .particle-field canvas {
+    pointer-events: none !important;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(64px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-orb-1 {
+    width: 280px;
+    height: 280px;
+    top: 12%;
+    left: 8%;
+    background: hsl(var(--primary) / 0.22);
+  }
+
+  .hero-orb-2 {
+    width: 340px;
+    height: 340px;
+    bottom: 8%;
+    right: 6%;
+    background: hsl(var(--accent) / 0.18);
+  }
+
+  .cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 420px;
+    height: 420px;
+    margin: -210px 0 0 -210px;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 40;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.1), transparent 70%);
+  }
+
+  .skill-card,
+  .project-card {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+
+  .skill-card:hover,
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+.section-atmosphere {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-atmosphere-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.55;
+}
+
+.section-wash {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+}
+
+.wash-sky {
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 20%, hsl(199 95% 88% / 0.9), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 90% 80%, hsl(221 90% 92% / 0.85), transparent 50%),
+    linear-gradient(180deg, #f4f9ff 0%, #eaf3ff 100%);
+}
+
+.wash-mint {
+  background:
+    radial-gradient(ellipse 70% 50% at 85% 15%, hsl(166 70% 88% / 0.9), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 8% 90%, hsl(199 80% 90% / 0.7), transparent 50%),
+    linear-gradient(180deg, #f3fbf8 0%, #e7f6f1 100%);
+}
+
+.wash-lavender {
+  background:
+    radial-gradient(ellipse 75% 55% at 12% 80%, hsl(258 70% 92% / 0.85), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 92% 18%, hsl(221 90% 92% / 0.8), transparent 50%),
+    linear-gradient(180deg, #f7f5ff 0%, #eef2ff 100%);
+}
+
+.wash-peach {
+  background:
+    radial-gradient(ellipse 70% 50% at 90% 70%, hsl(24 95% 90% / 0.85), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 10% 20%, hsl(199 90% 92% / 0.7), transparent 50%),
+    linear-gradient(180deg, #fff8f3 0%, #ffefe6 100%);
+}
+
+.section-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(hsl(221 83% 35% / 0.35) 1.6px, transparent 1.6px);
+  background-size: 18px 18px;
+  animation: dots-drift 20s linear infinite;
+  opacity: 0.85;
+}
+
+.tone-accent .section-dots {
+  background-image: radial-gradient(hsl(166 72% 36% / 0.18) 1.2px, transparent 1.2px);
+}
+
+.float-dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: hsl(var(--primary));
+  box-shadow: 0 0 12px hsl(var(--primary) / 0.45);
+  animation: float-dot 7s ease-in-out infinite;
+  opacity: 0.55;
+}
+
+.tone-accent .float-dot {
+  background: hsl(var(--accent));
+  box-shadow: 0 0 12px hsl(var(--accent) / 0.45);
+}
+
+@keyframes dots-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 22px 22px;
+  }
+}
+
+@keyframes float-dot {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(-18px) scale(1.25);
+    opacity: 1;
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-dots,
+  .float-dot,
+  .hero-orb {
+    animation: none !important;
   }
 }

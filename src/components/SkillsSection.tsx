@@ -1,5 +1,7 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import SectionAtmosphere from '@/components/SectionAtmosphere';
+import skillsBg from '@/assets/bg-skills.png';
 
 const SkillsSection = () => {
   const skillCategories = [
@@ -40,13 +42,19 @@ const SkillsSection = () => {
       title: "E-commerce & CMS",
       icon: "🛒",
       skills: ["Shopify Apps", "Shopify Plus", "WordPress", "Webflow", "Payment Integration", "Inventory Management"]
+    },
+    {
+      title: "Automation",
+      icon: "⚡",
+      skills: ["n8n", "Zapier", "Make.com", "Webhooks", "Workflow Automation", "API Orchestration"]
     }
     
   ];
 
   return (
-    <section id="skills" className="py-20">
-      <div className="container mx-auto px-6">
+    <section id="skills" className="relative py-20 overflow-hidden">
+      <SectionAtmosphere image={skillsBg} wash="mint" />
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="section-header mb-4">Technical Skills</h2>
@@ -62,7 +70,7 @@ const SkillsSection = () => {
                 className="w-full sm:w-[calc(33.333%-1.5rem)] flex justify-center"
               >
                 <Card 
-                  className="skill-card animate-scale-in w-full"
+                  className="skill-card w-full"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="mb-4">

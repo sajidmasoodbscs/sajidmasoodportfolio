@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Download, Menu, X } from 'lucide-react';
+import { downloadCv } from '@/lib/downloadCv';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,14 +25,14 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
-        scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border/50' : ''
+      className={`fixed top-4 left-1/2 z-50 w-[min(1120px,calc(100%-1.5rem))] -translate-x-1/2 rounded-full transition-smooth ${
+        scrolled ? 'bg-white/85 shadow-lg backdrop-blur-xl border border-border/70' : 'bg-white/55 backdrop-blur-md border border-white/70'
       }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold primary-gradient bg-clip-text text-transparent">
-            Portfolio
+          <div className="text-lg md:text-2xl font-bold primary-gradient bg-clip-text text-transparent whitespace-nowrap">
+            Sajid Masood
           </div>
 
           {/* Desktop Navigation */}
@@ -40,11 +41,19 @@ const Navigation = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-smooth"
+                className="nav-link text-foreground/80 hover:text-primary transition-smooth"
               >
                 {item.label}
               </a>
             ))}
+            <Button
+              size="sm"
+              className="primary-gradient"
+              onClick={downloadCv}
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Download CV
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -71,6 +80,16 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
+            <Button
+              className="w-full primary-gradient mt-2"
+              onClick={() => {
+                setIsOpen(false);
+                downloadCv();
+              }}
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Download CV
+            </Button>
           </div>
         )}
       </div>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sajid Masood — Senior Full-Stack Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a2233;
+      --muted: #4a5568;
+      --navy: #1b365d;
+      --navy-deep: #12243f;
+      --gold: #c9a227;
+      --line: #cfd6e0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      background: #e8edf2;
+      color: var(--ink);
+      line-height: 1.42;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--navy-deep);
+    }
+
+    .toolbar button {
+      font: 600 14px/1 "Source Sans 3", sans-serif;
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 18px;
+      cursor: pointer;
+    }
+
+    .toolbar .primary { background: var(--gold); color: #1a1406; }
+    .toolbar .ghost { background: transparent; color: #fff; border: 1px solid #5d7394; }
+
+    .sheet-wrap { padding: 24px 12px 48px; }
+
+    .sheet {
+      width: 210mm;
+      max-width: 100%;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 18px 50px rgba(18, 36, 63, 0.18);
+    }
+
+    header.resume-head {
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+      color: #fff;
+      padding: 22px 28px 16px;
+    }
+
+    .name {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .headline {
+      margin-top: 3px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #e4c76b;
+    }
+
+    .stack-line {
+      margin-top: 6px;
+      font-size: 11.5px;
+      color: #d7e0ec;
+    }
+
+    .contact {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 14px;
+      font-size: 11.5px;
+      color: #d7e0ec;
+    }
+
+    .contact a { color: #d7e0ec; text-decoration: none; }
+
+    .body { padding: 14px 28px 20px; }
+
+    h2 {
+      font-size: 10.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      border-bottom: 1.5px solid var(--navy);
+      padding-bottom: 3px;
+      margin: 12px 0 8px;
+      font-weight: 700;
+    }
+
+    .summary { font-size: 12.2px; color: var(--muted); margin-bottom: 6px; }
+
+    .comp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 18px;
+      font-size: 12px;
+      list-style: none;
+    }
+
+    .comp-grid li { padding-left: 10px; position: relative; }
+    .comp-grid li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 4px;
+      height: 4px;
+      background: var(--navy);
+      border-radius: 50%;
+    }
+
+    .tech {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 3px 10px;
+      font-size: 11.6px;
+    }
+
+    .tech dt { font-weight: 700; color: var(--navy); }
+    .tech dd { color: #2d3748; }
+
+    .pdf-page-start {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    h2 {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    .job-keep, .project {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .job { margin-bottom: 11px; }
+
+    .job-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .role { font-size: 13.5px; font-weight: 700; }
+    .company { font-size: 12.2px; color: var(--navy); font-weight: 600; }
+    .dates { font-size: 11.5px; color: var(--muted); font-weight: 600; white-space: nowrap; }
+    .job-lead { font-size: 12px; color: var(--muted); margin: 4px 0 2px; font-style: italic; }
+
+    h3.sub {
+      font-size: 12px;
+      margin: 7px 0 3px;
+      color: var(--ink);
+    }
+
+    ul.bullets {
+      margin: 3px 0 0 16px;
+      font-size: 12px;
+    }
+
+    ul.bullets li { margin-bottom: 2.5px; }
+
+    .projects { display: flex; flex-direction: column; gap: 8px; }
+
+    .project h4 { font-size: 12.6px; font-weight: 700; }
+    .project .meta { font-size: 11.2px; color: var(--navy); font-weight: 600; margin: 1px 0 2px; }
+    .project p { font-size: 11.8px; color: var(--muted); }
+
+    .foot {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .hint {
+      text-align: center;
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 10px;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .toolbar, .hint { display: none !important; }
+      .sheet-wrap { padding: 0; }
+      .sheet { box-shadow: none; width: auto; }
+      header.resume-head { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      @page { size: A4; margin: 8mm 10mm; }
+    }
+
+    @media (max-width: 820px) {
+      .sheet { width: 100%; }
+      header.resume-head, .body { padding-left: 16px; padding-right: 16px; }
+      .job-top, .comp-grid, .tech, .foot { display: block; }
+      .dates { margin-top: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button class="primary" type="button" onclick="downloadPdf()">Download PDF</button>
+    <button class="ghost" type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <div class="sheet-wrap">
+    <article class="sheet" id="resume">
+      <header class="resume-head">
+        <div class="name">Sajid Masood</div>
+        <div class="headline">Senior Full-Stack Software Engineer</div>
+        <div class="stack-line">Node.js · TypeScript · React · Next.js · Shopify App Development · .NET · Razor Pages · CMS &amp; E-commerce</div>
+        <div class="contact">
+          <a href="mailto:sajidmasood351@gmail.com">sajidmasood351@gmail.com</a>
+          <a href="https://www.linkedin.com/in/sajid-masood-380707112/" target="_blank" rel="noopener">linkedin.com/in/sajid-masood-380707112</a>
+          <a href="https://github.com/sajidmasoodbscs" target="_blank" rel="noopener">github.com/sajidmasoodbscs</a>
+        </div>
+      </header>
+
+      <div class="body">
+        <h2>Professional Summary</h2>
+        <p class="summary">
+          Senior Full-Stack Software Engineer with 7+ years of experience designing, building, and delivering production-grade web applications, enterprise systems, and e-commerce platforms. Proven expertise in modern JavaScript/TypeScript stacks (Node.js, Express, React, Next.js), Shopify custom app development, and enterprise .NET applications.
+        </p>
+        <p class="summary">
+          Skilled in architecting scalable backend services, responsive frontends, complex data-driven interfaces, and third-party integrations. Experienced collaborating with product, design, QA, and stakeholder teams to deliver reliable, high-performance solutions that meet business and technical requirements.
+        </p>
+
+        <h2>Core Competencies</h2>
+        <ul class="comp-grid">
+          <li>Full-Stack Web Application Development</li>
+          <li>Shopify Custom App &amp; Theme Development</li>
+          <li>Enterprise Application Development (.NET / Razor Pages)</li>
+          <li>REST API Design &amp; Third-Party Integrations</li>
+          <li>React / Next.js Frontend Architecture</li>
+          <li>Node.js Backend Services &amp; Microservices</li>
+          <li>Database Design (PostgreSQL, MySQL, MongoDB)</li>
+          <li>Authentication, Authorization &amp; Security</li>
+          <li>CMS Platforms (Shopify, Webflow, WordPress/Elementor)</li>
+          <li>Performance Optimization, Debugging &amp; Production Support</li>
+          <li>CI/CD, Cloud Deployment &amp; DevOps Practices</li>
+        </ul>
+
+        <h2>Core Technologies</h2>
+        <dl class="tech">
+          <dt>Languages</dt>
+          <dd>JavaScript, TypeScript, C#</dd>
+          <dt>Backend</dt>
+          <dd>Node.js, NestJS, Express.js, REST APIs, GraphQL, WebSockets, Socket.IO, Swagger / OpenAPI</dd>
+          <dt>Frontend</dt>
+          <dd>React.js, Next.js, Razor Pages, Redux, Vite, jQuery, Tailwind CSS, Bootstrap, Material UI, DataTables</dd>
+          <dt>Shopify</dt>
+          <dd>Shopify, Shopify Apps, Shopify APIs, Liquid, Polaris, Webhooks</dd>
+          <dt>Data</dt>
+          <dd>PostgreSQL, MySQL, MongoDB, Redis, Supabase, AWS RDS, Prisma, TypeORM, Sequelize, Mongoose, Drizzle</dd>
+          <dt>CMS</dt>
+          <dd>Webflow, WordPress, Elementor</dd>
+          <dt>Cloud &amp; DevOps</dt>
+          <dd>AWS, Azure, Google Cloud, Vercel, Render, Heroku, Netlify, DigitalOcean, Docker, Jenkins, GitHub Actions, PM2, Nginx, CI/CD</dd>
+          <dt>Tooling</dt>
+          <dd>Git, GitHub, Postman, Sentry, Winston</dd>
+        </dl>
+
+        <section class="pdf-page-start section-block" id="experience">
+        <h2>Professional Experience</h2>
+
+        <div class="job">
+          <div class="job-top job-keep">
+            <div>
+              <div class="role">Senior Software Engineer</div>
+              <div class="company">Integriti · April 2023 – Present</div>
+            </div>
+            <div class="dates">Apr 2023 – Present</div>
+          </div>
+          <p class="job-lead">Leading development across enterprise applications, Shopify solutions, e-commerce platforms, and full-stack web systems.</p>
+
+          <h3 class="sub">Enterprise Application Development</h3>
+          <ul class="bullets">
+            <li>Served as Senior Frontend Developer on a large-scale billing and claims management system built with .NET and Razor Pages.</li>
+            <li>Developed complex data-driven interfaces featuring advanced tables, filtering, sorting, forms, modals, validation, and multi-step business workflows using Razor Pages, JavaScript, jQuery, AJAX, Bootstrap, and DataTables.</li>
+            <li>Collaborated closely with backend developers, QA, product managers, and stakeholders to deliver and validate business-critical features.</li>
+            <li>Improved usability, reliability, and maintainability of frontend components in a high-complexity production environment.</li>
+          </ul>
+
+          <h3 class="sub">Shopify App Development &amp; E-commerce</h3>
+          <ul class="bullets">
+            <li>Designed and built custom Shopify applications using Node.js, Express.js, React, PostgreSQL, and Shopify Polaris.</li>
+            <li>Integrated Shopify Admin API and Storefront API for data management, automation, and business logic.</li>
+            <li>Delivered specialized solutions including wholesale/fundraising tagging workflows, real-time pricing functionality, and custom Shopify–Klaviyo event tracking.</li>
+            <li>Customized Shopify themes with Liquid and JavaScript; resolved theme, SEO, functionality, and integration issues.</li>
+          </ul>
+
+          <h3 class="sub">Full-Stack &amp; CMS Development</h3>
+          <ul class="bullets">
+            <li>Built scalable backend services and RESTful APIs with Node.js, Express.js, and TypeScript.</li>
+            <li>Developed responsive frontend applications using React.js and Next.js.</li>
+            <li>Implemented authentication, authorization, role-based access control, and secure API patterns.</li>
+            <li>Delivered and customized websites on Shopify, Webflow, and WordPress/Elementor, including API integrations and performance/SEO improvements.</li>
+          </ul>
+        </div>
+
+        <div class="job job-keep">
+          <div class="job-top">
+            <div>
+              <div class="role">Associate Node.js Developer</div>
+              <div class="company">Alfain Technologies · April 2021 – April 2023</div>
+            </div>
+            <div class="dates">Apr 2021 – Apr 2023</div>
+          </div>
+          <ul class="bullets">
+            <li>Developed and maintained large-scale web applications using Node.js and Express.js.</li>
+            <li>Designed and implemented RESTful APIs and backend services with MongoDB and MySQL.</li>
+            <li>Built bulk-processing batches and complex data workflows for large datasets.</li>
+            <li>Created database reports and analytics using AWS QuickSight and AWS RDS.</li>
+            <li>Participated in code reviews, enforced development standards, and supported releases via Jenkins and CI/CD pipelines.</li>
+            <li>Collaborated with product, design, and QA teams to deliver high-quality features.</li>
+          </ul>
+        </div>
+
+        <div class="job job-keep">
+          <div class="job-top">
+            <div>
+              <div class="role">Backend Developer / Intern</div>
+              <div class="company">Alfain Technologies · January 2019 – April 2021</div>
+            </div>
+            <div class="dates">Jan 2019 – Apr 2021</div>
+          </div>
+          <ul class="bullets">
+            <li>Developed and maintained company website frontend (HTML, CSS, JavaScript) and backend services.</li>
+            <li>Designed database-driven functionality using MySQL.</li>
+            <li>Contributed to coding standards, code reviews, and team troubleshooting efforts.</li>
+          </ul>
+        </div>
+        </section>
+
+        <section class="section-block">
+        <h2>Selected Projects</h2>
+        <div class="projects">
+          <div class="project">
+            <h4>Enterprise Billing &amp; Claims Management System</h4>
+            <div class="meta">Senior Frontend Developer · .NET, Razor Pages, JavaScript, jQuery, AJAX, Bootstrap, DataTables</div>
+            <p>Built and maintained complex data-driven workflows, interactive grids, dynamic forms, and business-critical UI components for a large enterprise system. Focused on usability, reliability, and seamless integration with backend services.</p>
+          </div>
+          <div class="project">
+            <h4>Shopify Custom Apps &amp; Integrations</h4>
+            <div class="meta">Full-Stack Developer · Node.js, Express, React, PostgreSQL, Shopify APIs, Polaris, Liquid</div>
+            <p>Developed multiple production Shopify applications including wholesale/fundraising tagging, real-time pricing, and custom Klaviyo event tracking. Delivered Admin and Storefront API integrations and theme customizations.</p>
+          </div>
+          <div class="project">
+            <h4>Lead Management CRM</h4>
+            <div class="meta">Full-Stack Developer · MERN Stack (React, Node.js, Express, MongoDB)</div>
+            <p>Built a complete CRM platform featuring lead/opportunity management, sales pipeline, task automation, role-based access, calendar integration, and workflow tools.</p>
+          </div>
+          <div class="project">
+            <h4>Custom CRM – Business Process Management Platform</h4>
+            <div class="meta">Full-Stack Developer · Next.js, Node.js, TypeScript, MySQL</div>
+            <p>Designed and developed a custom CRM to replace third-party software, including automated client profile creation, team-based data visibility, activity logging, audit trails, and in-app notifications.</p>
+          </div>
+          <div class="project">
+            <h4>Rewards Platform – Transit &amp; Ticketing</h4>
+            <div class="meta">Full-Stack Developer</div>
+            <p>Created a dual-portal rewards system (customer + partner) with coupon management, points-based rewards tied to ticket purchases, and end-to-end redemption workflows.</p>
+          </div>
+          <div class="project">
+            <h4>Doctor Appointment &amp; Medical Scheduling Platform</h4>
+            <div class="meta">Full-Stack Developer · Next.js, Node.js, Express, React, MongoDB</div>
+            <p>Developed a medical scheduling platform with doctor discovery, QR-code booking, appointment reminders, reputation management, and front-desk workflows.</p>
+          </div>
+          <div class="project">
+            <h4>Shopify E-commerce Store &amp; Klaviyo Connector</h4>
+            <div class="meta">Shopify / Full-Stack Developer</div>
+            <p>Built a complete Shopify store for a US-based apparel client and a custom Shopify–Klaviyo integration for advanced storefront event tracking (Lamar Collective).</p>
+          </div>
+        </div>
+        </section>
+
+        <div class="foot">
+          <div>
+            <h2>Certifications</h2>
+            <ul class="bullets">
+              <li>Shopify Foundation Certified</li>
+              <li>MongoDB Certification</li>
+              <li>MySQL Certification</li>
+            </ul>
+          </div>
+          <div>
+            <h2>Education</h2>
+            <div class="role" style="font-size:13px">Bachelor of Science in Computer Science</div>
+            <div class="company">University of Sargodha · 2014 – 2018</div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <p class="hint">Download PDF, or use Print → Save as PDF for the sharpest file.</p>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+  <script>
+    function downloadPdf() {
+      const el = document.getElementById("resume");
+      html2pdf().set({
+        margin: [8, 8, 8, 8],
+        filename: "Sajid_Masood_Resume.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+        pagebreak: {
+          mode: ["css", "legacy"],
+          before: ".pdf-page-start",
+          avoid: [".job-keep", ".project", "h2"]
+        }
+      }).from(el).save();
+    }
+    window.addEventListener("load", () => {
+      setTimeout(downloadPdf, 500);
+    });
+  </script>
+</body>
+</html>

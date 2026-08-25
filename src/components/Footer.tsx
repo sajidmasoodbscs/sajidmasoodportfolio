@@ -9,14 +9,14 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-background border-t border-border/50">
+    <footer className="bg-white border-t border-border/60">
       <div className="container mx-auto px-6 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* Brand */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold primary-gradient bg-clip-text text-transparent">
-                Portfolio
+                Sajid Masood
               </h3>
               <p className="text-muted-foreground">
                 Full Stack MERN Developer crafting scalable web solutions 
@@ -62,22 +62,41 @@ const Footer = () => {
                     variant="outline"
                     size="icon"
                     className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-smooth"
+                    asChild
                   >
-                    <Github className="h-5 w-5" />
+                    <a
+                      href="https://github.com/sajidmasoodbscs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub"
+                    >
+                      <Github className="h-5 w-5" />
+                    </a>
                   </Button>
                   <Button
                     variant="outline"
                     size="icon"
                     className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-smooth"
+                    asChild
                   >
-                    <Linkedin className="h-5 w-5" />
+                    <a
+                      href="https://www.linkedin.com/in/sajid-masood-380707112/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </a>
                   </Button>
                   <Button
                     variant="outline"
                     size="icon"
                     className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-smooth"
+                    asChild
                   >
-                    <Mail className="h-5 w-5" />
+                    <a href="#contact" aria-label="Email / contact">
+                      <Mail className="h-5 w-5" />
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -87,7 +106,7 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-muted-foreground text-sm">
-              © {currentYear} Portfolio. Built with React, TypeScript & Tailwind CSS.
+              © {currentYear} Sajid Masood.
             </p>
             
             <Button

@@ -1,49 +1,51 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import SectionAtmosphere from '@/components/SectionAtmosphere';
+import experienceBg from '@/assets/bg-experience.png';
 
 const ExperienceSection = () => {
   const experiences = [
     {
-      period: "2021 - Present",
-      title: "Senior Full Stack Developer",
-      company: "Freelance / Contract Work",
-      description: "Leading development of multiple MERN stack applications, Shopify apps, and cloud-based solutions. Specialized in e-commerce platforms, CMS integrations, and AWS services.",
-      technologies: ["React", "Node.js", "MongoDB", "AWS", "Shopify"],
+      period: "Apr 2023 – Present",
+      title: "Senior Software Engineer",
+      company: "Integriti",
+      description: "Leading development across enterprise applications, Shopify solutions, e-commerce platforms, and full-stack web systems. Senior frontend work on a large-scale .NET / Razor Pages billing and claims system, plus custom Shopify apps (Node.js, Express, React, PostgreSQL, Polaris) and CMS sites on Shopify, Webflow, and WordPress.",
+      technologies: ["React", "Next.js", "Node.js", "TypeScript", ".NET", "Razor Pages", "Shopify", "PostgreSQL"],
       achievements: [
-        "Delivered 15+ full-stack applications",
-        "Built custom Shopify apps serving 100+ merchants",
-        "Implemented AWS solutions reducing costs by 40%"
+        "Built complex data-driven UIs: tables, filtering, forms, modals, and multi-step workflows",
+        "Delivered Shopify Admin/Storefront API apps, theme work in Liquid, and Klaviyo tracking",
+        "Implemented REST APIs, auth/RBAC, and production-ready React and Next.js frontends"
       ]
     },
     {
-      period: "2019 - 2021", 
-      title: "MERN Stack Developer",
-      company: "Tech Solutions Inc.",
-      description: "Developed responsive web applications using React and Node.js. Worked with cross-functional teams on agile development projects using Jira and Git workflows.",
-      technologies: ["React", "Express.js", "MySQL", "Git", "Jira"],
+      period: "Apr 2021 – Apr 2023",
+      title: "Associate Node.js Developer",
+      company: "Alfain Technologies",
+      description: "Developed and maintained large-scale web applications with Node.js and Express. Designed REST APIs and backend services on MongoDB and MySQL, including bulk processing and reporting.",
+      technologies: ["Node.js", "Express.js", "MongoDB", "MySQL", "AWS RDS", "QuickSight", "Jenkins"],
       achievements: [
-        "Improved application performance by 50%",
-        "Led team of 3 junior developers",
-        "Implemented CI/CD pipelines"
+        "Built bulk-processing batches and complex data workflows for large datasets",
+        "Created database reports and analytics with AWS QuickSight and AWS RDS",
+        "Supported releases through Jenkins CI/CD, code reviews, and development standards"
       ]
     },
     {
-      period: "2018 - 2019",
-      title: "Frontend Developer",
-      company: "Digital Agency",
-      description: "Created responsive websites and web applications with modern JavaScript frameworks. Collaborated with designers and backend developers to deliver pixel-perfect implementations.",
-      technologies: ["JavaScript", "HTML5", "CSS3", "Bootstrap", "WordPress"],
+      period: "Jan 2019 – Apr 2021",
+      title: "Backend Developer / Intern",
+      company: "Alfain Technologies",
+      description: "Developed and maintained the company website frontend (HTML, CSS, JavaScript) and backend services, with MySQL-driven features and participation in code reviews and team troubleshooting.",
+      technologies: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL"],
       achievements: [
-        "Delivered 20+ responsive websites",
-        "Reduced page load times by 60%",
-        "Mentored 2 junior developers"
+        "Shipped database-driven website features on MySQL",
+        "Contributed to coding standards, reviews, and production support"
       ]
     }
   ];
 
   return (
-    <section id="experience" className="py-20">
-      <div className="container mx-auto px-6">
+    <section id="experience" className="relative py-20 overflow-hidden">
+      <SectionAtmosphere image={experienceBg} wash="peach" />
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="section-header mb-4">Professional Experience</h2>
@@ -56,7 +58,7 @@ const ExperienceSection = () => {
             {experiences.map((exp, index) => (
               <Card 
                 key={index}
-                className={`skill-card animate-slide-in-left`}
+                className="skill-card"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <CardContent className="p-8">
