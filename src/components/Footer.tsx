@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import BrandLogo from '@/components/BrandLogo';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,9 +16,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* Brand */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold primary-gradient bg-clip-text text-transparent">
-                Sajid Masood
-              </h3>
+              <BrandLogo size="lg" />
               <p className="text-muted-foreground">
                 Full Stack MERN Developer crafting scalable web solutions 
                 with modern technologies and best practices.

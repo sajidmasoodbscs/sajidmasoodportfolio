@@ -56,7 +56,7 @@ const SkillsSection = () => {
       <SectionAtmosphere image={skillsBg} wash="mint" />
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-16">
             <h2 className="section-header mb-4">Technical Skills</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               A comprehensive toolkit for building modern, scalable web applications
@@ -69,10 +69,7 @@ const SkillsSection = () => {
                 key={index} 
                 className="w-full sm:w-[calc(33.333%-1.5rem)] flex justify-center"
               >
-                <Card 
-                  className="skill-card w-full"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+                <Card className="skills-card w-full">
                   <div className="mb-4">
                     <div className="text-3xl mb-2">{category.icon}</div>
                     <h3 className="text-xl font-semibold text-foreground">
@@ -96,10 +93,7 @@ const SkillsSection = () => {
             ))}
           </div>
 
-
-
-          {/* Additional Technologies */}
-          <div className="mt-16 text-center animate-fade-in">
+          <div className="skills-extra mt-16 text-center">
             <h3 className="text-2xl font-semibold mb-6 text-foreground">
               Additional Technologies & Frameworks
             </h3>
@@ -112,7 +106,7 @@ const SkillsSection = () => {
                 <Badge 
                   key={index}
                   variant="outline"
-                  className="border-primary/30 hover:border-primary hover:bg-primary/10 transition-smooth"
+                  className="skill-extra-badge border-primary/30 hover:border-primary hover:bg-primary/10 transition-smooth"
                 >
                   {tech}
                 </Badge>

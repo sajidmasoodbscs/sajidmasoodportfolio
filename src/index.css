@@ -107,12 +107,74 @@
     transition: var(--transition-spring);
   }
 
+  .about-card {
+    @apply card-gradient border border-border/70 rounded-xl p-6 shadow-sm;
+    transform-style: preserve-3d;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.35s ease;
+  }
+
+  .about-card:hover {
+    transform: translateY(-6px) rotateX(2deg);
+    border-color: hsl(var(--primary) / 0.45);
+    box-shadow: var(--shadow-primary);
+  }
+
+  .skills-card {
+    @apply card-gradient border border-border/70 rounded-xl p-6 shadow-sm;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.35s ease;
+  }
+
+  .skills-card:hover {
+    transform: translateY(-8px) rotate(-0.6deg);
+    border-color: hsl(var(--accent) / 0.5);
+    box-shadow: var(--shadow-accent);
+  }
+
   .skill-card {
-    @apply card-gradient border border-border/70 rounded-lg p-6 shadow-sm transition-smooth hover:border-primary/40 hover:shadow-primary;
+    @apply card-gradient border border-border/70 rounded-xl p-6 shadow-sm;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.35s ease;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-10px);
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: var(--shadow-primary);
+  }
+
+  .experience-stack-card {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+
+  .experience-stack--static {
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .experience-stack--static .experience-stack-card {
+    position: relative !important;
+    inset: auto !important;
   }
 
   .project-card {
-    @apply card-gradient border border-border/70 rounded-lg overflow-hidden shadow-sm transition-smooth hover:border-accent/40 hover:shadow-accent;
+    @apply card-gradient border border-border/70 rounded-xl overflow-hidden shadow-sm;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.35s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-12px);
+    border-color: hsl(var(--accent) / 0.45);
+    box-shadow: var(--shadow-accent);
+  }
+
+  .project-card:hover .project-card-image {
+    transform: scale(1.04);
+  }
+
+  .project-card-image {
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .section-header {
@@ -184,16 +246,6 @@
     pointer-events: none;
     z-index: 40;
     background: radial-gradient(circle, hsl(var(--primary) / 0.1), transparent 70%);
-  }
-
-  .skill-card,
-  .project-card {
-    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
-  }
-
-  .skill-card:hover,
-  .project-card:hover {
-    transform: translateY(-8px) scale(1.02);
   }
 }
 

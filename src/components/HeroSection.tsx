@@ -7,7 +7,7 @@ import aboutBg from '@/assets/bg-about.png';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16">
       <SectionAtmosphere image={aboutBg} wash="sky" />
       <div className="hero-orb hero-orb-1" />
       <div className="hero-orb hero-orb-2" />

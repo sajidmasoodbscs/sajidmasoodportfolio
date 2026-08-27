@@ -42,7 +42,7 @@ const AboutSection = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div className="space-y-6 animate-slide-in-left">
+            <div className="about-copy space-y-6">
               <h3 className="text-3xl font-bold text-foreground">
                 Crafting Digital Solutions
               </h3>
@@ -60,12 +60,11 @@ const AboutSection = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 [perspective:1200px]">
               {highlights.map((highlight, index) => (
                 <Card 
                   key={index} 
-                  className="skill-card"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="about-card"
                 >
                   <highlight.icon className="h-8 w-8 text-primary mb-4" />
                   <h4 className="font-semibold text-foreground mb-2">

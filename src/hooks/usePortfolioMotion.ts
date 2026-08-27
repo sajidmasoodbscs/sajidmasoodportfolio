@@ -31,27 +31,134 @@ export function usePortfolioMotion(root: RefObject<HTMLElement | null>) {
         });
       });
 
-      const cards = page.querySelectorAll('.skill-card, .project-card');
-      ScrollTrigger.batch(cards, {
-        start: 'top 88%',
-        once: true,
-        interval: 0.1,
-        batchMax: 6,
-        onEnter: (batch) => {
+      // About — soft flip + rise from alternating sides
+      const aboutCopy = page.querySelector('#about .about-copy');
+      if (aboutCopy) {
+        gsap.fromTo(
+          aboutCopy,
+          { x: -48, opacity: 0, filter: 'blur(8px)' },
+          {
+            x: 0,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: aboutCopy, start: 'top 82%', once: true },
+          }
+        );
+      }
+
+      const aboutCards = page.querySelectorAll('#about .about-card');
+      aboutCards.forEach((card, i) => {
+        const fromLeft = i % 2 === 0;
+        gsap.fromTo(
+          card,
+          {
+            x: fromLeft ? -60 : 60,
+            y: 40,
+            opacity: 0,
+            rotateY: fromLeft ? -18 : 18,
+            transformPerspective: 900,
+          },
+          {
+            x: 0,
+            y: 0,
+            opacity: 1,
+            rotateY: 0,
+            duration: 0.85,
+            delay: i * 0.12,
+            ease: 'power3.out',
+            clearProps: 'filter',
+            scrollTrigger: { trigger: card, start: 'top 88%', once: true },
+          }
+        );
+      });
+
+      // Skills — radial wipe + rise (unique vs About flip / Projects curtain)
+      const skillCards = gsap.utils.toArray<HTMLElement>(page.querySelectorAll('#skills .skills-card'));
+      skillCards.forEach((card, i) => {
+        const col = i % 3;
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            y: 36,
+            scale: 0.96,
+            clipPath: 'circle(0% at 50% 80%)',
+            rotate: col === 0 ? -2.5 : col === 2 ? 2.5 : 0,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            clipPath: 'circle(140% at 50% 50%)',
+            rotate: 0,
+            duration: 0.95,
+            delay: (i % 3) * 0.09,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              once: true,
+            },
+          }
+        );
+      });
+
+      const skillBadges = page.querySelector('#skills .skills-extra');
+      if (skillBadges) {
+        gsap.fromTo(
+          skillBadges.querySelectorAll('.skill-extra-badge'),
+          { y: 16, opacity: 0, scale: 0.92 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.45,
+            stagger: 0.03,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: skillBadges, start: 'top 88%', once: true },
+          }
+        );
+      }
+
+      // Projects — clip-path curtain reveal + image ease-in
+      const projectCards = page.querySelectorAll('#projects .project-card');
+      projectCards.forEach((card, i) => {
+        const img = card.querySelector('.project-card-image');
+        const col = i % 3;
+
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            y: 48,
+            clipPath: 'inset(12% 8% 12% 8% round 16px)',
+          },
+          {
+            opacity: 1,
+            y: 0,
+            clipPath: 'inset(0% 0% 0% 0% round 16px)',
+            duration: 0.95,
+            delay: (col % 3) * 0.08,
+            ease: 'power4.out',
+            scrollTrigger: { trigger: card, start: 'top 90%', once: true },
+          }
+        );
+
+        if (img) {
           gsap.fromTo(
-            batch,
-            { y: 56, scale: 0.94, rotate: 1.2 },
+            img,
+            { scale: 1.12, opacity: 0.55 },
             {
-              y: 0,
               scale: 1,
-              rotate: 0,
-              duration: 0.75,
-              stagger: 0.1,
-              ease: 'power4.out',
-              overwrite: 'auto',
+              opacity: 1,
+              duration: 1.1,
+              ease: 'power3.out',
+              scrollTrigger: { trigger: card, start: 'top 90%', once: true },
             }
           );
-        },
+        }
       });
     },
     { scope: root }

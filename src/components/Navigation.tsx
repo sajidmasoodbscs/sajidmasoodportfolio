@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Download, Menu, X } from 'lucide-react';
 import { downloadCv } from '@/lib/downloadCv';
+import BrandLogo from '@/components/BrandLogo';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,9 +32,7 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-lg md:text-2xl font-bold primary-gradient bg-clip-text text-transparent whitespace-nowrap">
-            Sajid Masood
-          </div>
+          <BrandLogo size="md" />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

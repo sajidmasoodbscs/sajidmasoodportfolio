@@ -159,28 +159,27 @@ const ProjectsSection = () => {
     <section id="projects" className="relative py-20 overflow-hidden">
       <SectionAtmosphere image={projectsBg} wash="lavender" />
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
             <h2 className="section-header mb-4">Featured Projects</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Showcase of recent work demonstrating full-stack development capabilities
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((project, index) => (
                <Card 
                  key={index}
-                 className="project-card hover:shadow-lg transition-shadow duration-300"
-                 style={{ animationDelay: `${index * 0.1}s` }}
+                 className="project-card flex flex-col h-full"
                >
-                 <CardHeader>
+                 <CardHeader className="pb-3">
                    <div className="aspect-[3/2] relative overflow-hidden rounded-lg mb-4 bg-slate-100/90 border border-border/50">
                      <img 
                        src={project.image} 
                        alt={project.title}
                        loading="lazy"
-                       className="absolute inset-0 h-full w-full object-contain p-2"
+                       className="project-card-image absolute inset-0 h-full w-full object-contain p-2"
                      />
                    </div>
                    <div className="flex items-start justify-between">
@@ -202,13 +201,13 @@ const ProjectsSection = () => {
                    </div>
                  </CardHeader>
                 
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground leading-relaxed">
+                <CardContent className="space-y-4 flex flex-col flex-1">
+                  <p className="text-muted-foreground leading-relaxed text-sm line-clamp-4">
                     {project.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, techIndex) => (
+                    {project.technologies.slice(0, 5).map((tech, techIndex) => (
                       <Badge 
                         key={techIndex}
                         variant="outline"
@@ -217,9 +216,14 @@ const ProjectsSection = () => {
                         {tech}
                       </Badge>
                     ))}
+                    {project.technologies.length > 5 && (
+                      <Badge variant="outline" className="text-xs border-primary/30">
+                        +{project.technologies.length - 5}
+                      </Badge>
+                    )}
                   </div>
                   
-                   <div className="flex gap-3 pt-4">
+                   <div className="flex gap-3 pt-4 mt-auto">
                      <Button 
                        variant="outline" 
                        size="sm"
@@ -246,7 +250,7 @@ const ProjectsSection = () => {
                          disabled
                        >
                          <ExternalLink className="h-4 w-4 mr-2" />
-                         Available in Interview
+                         Interview
                        </Button>
                      )}
                    </div>
@@ -255,7 +259,7 @@ const ProjectsSection = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12 animate-fade-in">
+          <div className="text-center mt-12">
             <Button 
               variant="outline" 
               size="lg"
