@@ -70,9 +70,11 @@ const HeroSection = () => {
                 alt="Sajid Masood"
                 className="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-[2rem] object-cover border-4 border-white shadow-elegant"
               />
-              <div className="absolute -bottom-4 -left-4 z-20 rounded-2xl bg-white/90 px-4 py-3 shadow-lg backdrop-blur">
+              <div className="absolute -bottom-4 -left-4 z-20 max-w-[14rem] rounded-2xl bg-white/90 px-4 py-3 shadow-lg backdrop-blur md:max-w-none">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">Focus</p>
-                <p className="font-semibold">MERN · Shopify · AWS</p>
+                <p className="text-sm font-semibold leading-snug md:text-base">
+                  MERN · CMS (Shopify, WordPress, Webflow) · Deployments
+                </p>
               </div>
             </div>
           </div>

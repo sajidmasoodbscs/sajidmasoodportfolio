@@ -146,18 +146,6 @@
     backface-visibility: hidden;
   }
 
-  .experience-stack--static {
-    height: auto !important;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .experience-stack--static .experience-stack-card {
-    position: relative !important;
-    inset: auto !important;
-  }
-
   .project-card {
     @apply card-gradient border border-border/70 rounded-xl overflow-hidden shadow-sm;
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.35s ease;
@@ -175,6 +163,52 @@
 
   .project-card-image {
     transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .feedback-card {
+    @apply rounded-2xl bg-white/90 shadow-sm backdrop-blur-sm;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.35s ease;
+  }
+
+  .feedback-card:hover {
+    transform: translateY(-10px) rotate(-0.4deg);
+    border-color: hsl(var(--primary) / 0.35);
+    box-shadow: var(--shadow-primary);
+  }
+
+  .feedback-card:hover .feedback-avatar {
+    transform: scale(1.06);
+  }
+
+  .feedback-avatar {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .feedback-orbit-card.is-active {
+    box-shadow: 0 28px 60px -28px hsl(221 83% 45% / 0.45);
+    border-color: hsl(var(--primary) / 0.35);
+  }
+
+  .feedback-marquee {
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .feedback-marquee-track {
+    animation: feedback-marquee 32s linear infinite;
+  }
+
+  .feedback-marquee:hover .feedback-marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes feedback-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 
   .section-header {

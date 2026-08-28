@@ -16,8 +16,8 @@ export function answerFromProfile(question: string): string {
   if (/(skill|stack|tech|mern|react|node)/.test(q)) {
     return "Core stack: MERN (MongoDB, Express, React, Node.js), TypeScript, Next.js, plus .NET/Razor Pages, Shopify, PostgreSQL/MySQL, and AWS/Vercel deployments. He also works with n8n, Zapier, and Make.com.";
   }
-  if (/(project|portfolio|mx|foremost|crm|pharmacy|van|ride|inspection)/.test(q)) {
-    return "Recent work includes Check My Ride (vehicle inspections), Nett Pharmacy and Oushk Pharmacy (Shopify), Call A Van (on-demand drivers at callavan.live), Skin and Hair Center (Shopify clinic store), MX SoCal, Foremost (MERN on AWS), a rewards platform, a medical appointment system, and Integriti/GreenMinds CRMs.";
+  if (/(project|portfolio|mx|foremost|crm|pharmacy|van|ride|inspection|employee|hr)/.test(q)) {
+    return "Recent work includes Integriti CRM (crm.integritistudio.us), Employee Management System (employees.integritistudio.us), Check My Ride, Nett/Oushk Pharmacy (Shopify), Call A Van, MX SoCal, Foremost (MERN on AWS), rewards platform, medical appointment system, and GreenMinds CRM.";
   }
   if (/(educat|degree|university|certif)/.test(q)) {
     return "BS Computer Science from University of Sargodha (2014–2018). Certifications: Shopify Foundation, MongoDB, and MySQL.";

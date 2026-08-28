@@ -5,6 +5,7 @@ import { ExternalLink, Github } from 'lucide-react';
 import rewardPlatformImg from '@/assets/Reward_Platform_Screenshot-1.png';
 import doctorAppointmentImg from '@/assets/Doctor Appointment System Screenshot-1.png';
 import integritiCrmImg from '@/assets/integriti-crm-screenshot-1.png';
+import employeesManagementImg from '@/assets/employees-management.png';
 import greenmindCrmImg from '@/assets/greenmind.png';
 import staffingImg from '@/assets/staffing-1.png';
 import studioImg from '@/assets/studio-1.png';
@@ -71,7 +72,17 @@ const ProjectsSection = () => {
       technologies: ["React", "Node.js", "MongoDB", "Role Management", "Task Automation"],
       image: integritiCrmImg,
       featured: true,
-      category: "CRM Development"
+      category: "CRM Development",
+      liveUrl: "https://crm.integritistudio.us"
+    },
+    {
+      title: "Employee Management System",
+      description: "Employee management platform focused on tracking employee efficiency and management performance metrics. Built-in task management with role-based access control (RBAC) for secure, organized workflows, plus PDF report generation for clear professional reports for management and performance analysis.",
+      technologies: ["Node.js", "Next.js", "PostgreSQL", "shadcn/ui", "RBAC", "PDF Reports"],
+      image: employeesManagementImg,
+      featured: true,
+      category: "HR / Operations",
+      liveUrl: "https://employees.integritistudio.us/"
     },
     {
       title: "Check My Ride",
