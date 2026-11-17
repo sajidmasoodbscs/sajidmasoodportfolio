@@ -32,11 +32,27 @@ export function usePortfolioMotion(root: RefObject<HTMLElement | null>) {
       });
 
       // About — soft flip + rise from alternating sides
+      const introVideo = page.querySelector('#about .intro-video');
+      if (introVideo) {
+        gsap.fromTo(
+          introVideo,
+          { x: -48, opacity: 0, filter: 'blur(8px)' },
+          {
+            x: 0,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: introVideo, start: 'top 82%', once: true },
+          }
+        );
+      }
+
       const aboutCopy = page.querySelector('#about .about-copy');
       if (aboutCopy) {
         gsap.fromTo(
           aboutCopy,
-          { x: -48, opacity: 0, filter: 'blur(8px)' },
+          { x: 48, opacity: 0, filter: 'blur(8px)' },
           {
             x: 0,
             opacity: 1,

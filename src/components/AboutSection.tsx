@@ -1,6 +1,7 @@
 import { Card } from '@/components/ui/card';
 import { Code, Database, Globe, Smartphone } from 'lucide-react';
 import SectionAtmosphere from '@/components/SectionAtmosphere';
+import IntroVideo from '@/components/IntroVideo';
 import aboutBg from '@/assets/bg-about.png';
 
 const AboutSection = () => {
@@ -41,7 +42,9 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div className="mb-16 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+            <IntroVideo />
+
             <div className="about-copy space-y-6">
               <h3 className="text-3xl font-bold text-foreground">
                 Crafting Digital Solutions
@@ -59,23 +62,23 @@ const AboutSection = () => {
                 and building analytics dashboards with AWS services.
               </p>
             </div>
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 [perspective:1200px]">
-              {highlights.map((highlight, index) => (
-                <Card 
-                  key={index} 
-                  className="about-card"
-                >
-                  <highlight.icon className="h-8 w-8 text-primary mb-4" />
-                  <h4 className="font-semibold text-foreground mb-2">
-                    {highlight.title}
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    {highlight.description}
-                  </p>
-                </Card>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 gap-6 [perspective:1200px] sm:grid-cols-2 lg:grid-cols-4">
+            {highlights.map((highlight, index) => (
+              <Card
+                key={index}
+                className="about-card"
+              >
+                <highlight.icon className="h-8 w-8 text-primary mb-4" />
+                <h4 className="font-semibold text-foreground mb-2">
+                  {highlight.title}
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  {highlight.description}
+                </p>
+              </Card>
+            ))}
           </div>
         </div>
       </div>

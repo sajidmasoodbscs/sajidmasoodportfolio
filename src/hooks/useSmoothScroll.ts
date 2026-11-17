@@ -16,6 +16,7 @@ export function useSmoothScroll() {
       smoothWheel: true,
       wheelMultiplier: 0.85,
       touchMultiplier: 1.1,
+      anchors: { offset: -112 },
     });
 
     lenis.on('scroll', ScrollTrigger.update);

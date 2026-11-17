@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Download, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
+import { ArrowDown, Download, Github, Linkedin, Mail, Play, Sparkles } from 'lucide-react';
 import profileImage from '@/assets/sajidmasood.jpeg';
 import { downloadCv } from '@/lib/downloadCv';
 import SectionAtmosphere from '@/components/SectionAtmosphere';
@@ -43,7 +43,16 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            <div className="hero-social flex justify-center lg:justify-start gap-3">
+            <div className="hero-social flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+              <a
+                href="#intro"
+                className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 py-1.5 pl-1.5 pr-4 text-sm font-medium text-primary shadow-sm backdrop-blur transition-smooth hover:border-primary/40"
+              >
+                <span className="primary-gradient flex h-8 w-8 items-center justify-center rounded-full text-white">
+                  <Play className="h-3.5 w-3.5 translate-x-px fill-current" />
+                </span>
+                Watch intro
+              </a>
               <a href="https://github.com/sajidmasoodbscs" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <Button variant="outline" size="icon" className="rounded-full bg-white/80">
                   <Github className="h-5 w-5" />
